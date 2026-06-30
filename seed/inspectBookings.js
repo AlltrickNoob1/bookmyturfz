@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 const path = require('path');
 
-const SERVICE_KEY = path.join(__dirname, '..', 'turf-1c32c-firebase-adminsdk-fbsvc-7c943fc563.json');
+const SERVICE_KEY = path.join(__dirname, '..', 'YOUR_SERVICE_KEY');
 
 try {
   const serviceAccount = require(SERVICE_KEY);
@@ -17,8 +17,8 @@ try {
 
 const db = admin.database();
 const targetEmails = [
-  'shaikhabdullah88911@gmail.com',
-  'abdullahshiakh880@gmail.com'
+  'abdullahansari.swccs@gmail.com',
+  'ansariabdullah11112222@gmail.com'
 ];
 
 async function inspect() {
