@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../context/Authcontext";
-import { ref, set, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import { database } from "../firebase-config/config";
 
 const time = [
