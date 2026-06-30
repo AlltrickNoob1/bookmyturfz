@@ -4,13 +4,13 @@ import { getDatabase } from "firebase/database";
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "ENTER_YOUR_API_KEY",
+  apiKey: "AIzaSyDe27qpEEQComE9p3VrndjGa6qFMtv2qmc",
   authDomain: "turf-1c32c.firebaseapp.com",
   databaseURL: "https://turf-1c32c-default-rtdb.firebaseio.com",
   projectId: "turf-1c32c",
   storageBucket: "turf-1c32c.appspot.com",
   messagingSenderId: "837226059982",
-  appId: "ENTER_YOUR_APPID",
+  appId: "1:837226059982:web:87c3abfa7adea7bfc5989f",
   measurementId: "G-QNFGLSJXKR"
 };
 
