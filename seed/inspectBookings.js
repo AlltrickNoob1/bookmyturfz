@@ -17,8 +17,8 @@ try {
 
 const db = admin.database();
 const targetEmails = [
-  'ENTER_YOUR_TRAGETED_EMAILS',
-  'ENTER_YOUR_TRAGETED_EMAILS'
+  'ENTER_YOUR_TARGET_EMAIL',
+  'ENTER_YOUR_TARGET_EMAIL'
 ];
 
 async function inspect() {
