@@ -1,0 +1,65 @@
+#loginBg{
+    width: 90%;
+    max-width: 900px;
+    margin: 2rem auto;
+    position: relative;
+}
+#loginBg img{
+    width: 100%;
+}
+#loginform{
+    border: 0px solid black;
+    width: 100%;
+    position: static;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #f3f4f6;
+    display: grid;
+    gap: 10px;
+    border-radius: 8px;
+}
+#headingLogin{
+    font-size: 28px;
+    font-weight: Bold;
+    text-align: center;
+    color: black;
+}
+#username,#password{
+    font-weight: bold;
+    font-size: 15px;
+    color: red;
+}
+#loginFormBtn{
+    width: 100%;
+    margin: auto;
+    color: white;
+    background-color: red;
+}
+#loginwithBtn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    border: 0px solid black;
+    width: 80%;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+}
+#glogo{
+    width: 24px;
+}
+#glogo img{
+    width: 100%;
+}
+
+@media (max-width: 480px){
+  #loginBg{ width: 95%; }
+  #loginform{ padding: 18px; }
+  #headingLogin{ font-size: 22px; }
+}
+#gtext{
+   color: black;
+}

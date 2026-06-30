@@ -1,0 +1,128 @@
+/* Dark UI/UX Payment Page */
+#paymentNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #ef4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+#paymentNav a{ 
+    color: white; 
+    display: flex;
+    align-items: center;
+}
+#BookedTurfName{
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-left: 12px;
+}
+#paymentContainerBox{
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 16px;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+#paymentMode{
+    width: 420px;
+    max-width: 94%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #1a1a1a;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-radius: 16px;
+    font-weight: 500;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+    border: 1px solid #2a2a2a;
+}
+.payment-header{
+    text-align: center;
+    margin-bottom: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+}
+.payment-amount{
+    text-align: center;
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 18px;
+}
+.testCardBox{
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+    padding: 12px;
+    border-radius: 8px;
+    color: #fca5a5;
+    font-size: 12px;
+}
+
+.payment-methods{ 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px;
+}
+
+.payment-option-label {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    background: #0f0f0f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #e5e7eb;
+    font-weight: 500;
+}
+
+.payment-option-label:hover {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.payment-option-label input[type="radio"]:checked + span {
+    color: white;
+}
+
+.payment-option-label.selected {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    color: white;
+}
+
+.chakra-button{ 
+    width: 100%;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    padding: 14px 16px !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4) !important;
+}
+
+.chakra-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+.chakra-button:disabled {
+    opacity: 0.7 !important;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px){
+    #BookedTurfName{ font-size: 16px }
+    #paymentMode{ width: 92%; padding: 24px }
+    .payment-header { font-size: 24px }
+}

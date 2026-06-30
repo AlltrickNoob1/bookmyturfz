@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated reads for turf collections
+    // Turf collections. Admin write rules are enabled below; replace
+    // "admin@example.com" with your admin email and deploy rules.
+    match /cricket/{doc=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (request.auth.token.email == "ansariabdullah11112222@gmail.com" || request.auth.token.email in ["admin1@example.com"]);
+    }
+    match /football/{doc=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (request.auth.token.email == "ansariabdullah11112222@gmail.com" || request.auth.token.email in ["admin1@example.com"]);
+    }
+    match /basketball/{doc=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (request.auth.token.email == "ansariabdullah11112222@gmail.com" || request.auth.token.email in ["admin1@example.com"]);
+    }
+    match /badminton/{doc=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (request.auth.token.email == "ansariabdullah11112222@gmail.com" || request.auth.token.email in ["admin1@example.com"]);
+    }
+
+    // To disable admin writes again, replace allow write with `if false` above.
+    // Deny everything else by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

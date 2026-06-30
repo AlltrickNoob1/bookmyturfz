@@ -1,0 +1,47 @@
+[debug] [2026-03-19T11:27:37.643Z] ----------------------------------------------------------------------
+[debug] [2026-03-19T11:27:37.646Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\study\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only database --debug
+[debug] [2026-03-19T11:27:37.646Z] CLI Version:   15.11.0
+[debug] [2026-03-19T11:27:37.647Z] Platform:      win32
+[debug] [2026-03-19T11:27:37.647Z] Node Version:  v24.14.0
+[debug] [2026-03-19T11:27:37.647Z] Time:          Thu Mar 19 2026 16:57:37 GMT+0530 (India Standard Time)
+[debug] [2026-03-19T11:27:37.647Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-19T11:27:39.625Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"projects"}
+[debug] [2026-03-19T11:27:39.631Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-19T11:27:39.861Z] Running auto auth
+[debug] [2026-03-19T11:27:39.862Z] [iam] checking project turf-1c32c for permissions ["firebase.projects.get","firebasedatabase.instances.update"]
+[debug] [2026-03-19T11:27:39.864Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:39.867Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions [none]
+[debug] [2026-03-19T11:27:39.868Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions  x-goog-user-project=turf-1c32c
+[debug] [2026-03-19T11:27:39.868Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update"]}
+[debug] [2026-03-19T11:27:41.441Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions 403
+[debug] [2026-03-19T11:27:41.442Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions {"error":{"code":403,"message":"Caller does not have required permission to use project turf-1c32c. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=turf-1c32c and then retry. Propagation of the new permission may take a few minutes.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"USER_PROJECT_DENIED","domain":"googleapis.com","metadata":{"consumer":"projects/turf-1c32c","containerInfo":"turf-1c32c","consoleUrl":"https://console.developers.google.com/iam-admin/iam?project=turf-1c32c","service":"cloudresourcemanager.googleapis.com"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Caller does not have required permission to use project turf-1c32c. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=turf-1c32c and then retry. Propagation of the new permission may take a few minutes."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developer console IAM admin","url":"https://console.developers.google.com/iam-admin/iam?project=turf-1c32c"}]}]}}
+[debug] [2026-03-19T11:27:41.444Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/turf-1c32c:testIamPermissions had HTTP Error: 403, Caller does not have required permission to use project turf-1c32c. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam?project=turf-1c32c and then retry. Propagation of the new permission may take a few minutes.
+[debug] [2026-03-19T11:27:41.446Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:41.447Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/turf-1c32c [none]
+[debug] [2026-03-19T11:27:42.021Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/turf-1c32c 200
+[debug] [2026-03-19T11:27:42.022Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/turf-1c32c {"projectId":"turf-1c32c","projectNumber":"837226059982","displayName":"turf","name":"projects/turf-1c32c","resources":{"hostingSite":"turf-1c32c","realtimeDatabaseInstance":"turf-1c32c-default-rtdb"},"state":"ACTIVE","etag":"1_e29fcdf6-680e-487d-a347-5ca96f98fd82"}
+[info] 
+[info] === Deploying to 'turf-1c32c'...
+[info] 
+[info] i  deploying database 
+[info] i  database: checking rules syntax... 
+[debug] [2026-03-19T11:27:42.029Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:42.029Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb [none]
+[debug] [2026-03-19T11:27:43.820Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb 200
+[debug] [2026-03-19T11:27:43.820Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb {"name":"projects/837226059982/locations/us-central1/instances/turf-1c32c-default-rtdb","project":"projects/837226059982","databaseUrl":"https://turf-1c32c-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2026-03-19T11:27:43.823Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:43.823Z] >>> [apiv2][query] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json dryRun=true
+[debug] [2026-03-19T11:27:43.823Z] >>> [apiv2][body] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json "{\r\n  \"rules\": {\r\n    \"users\": {\r\n      \".read\": \"auth != null\",\r\n      \".write\": \"auth != null\",\r\n      \"$uid\": {\r\n        \".read\": \"$uid === auth.uid\",\r\n        \".write\": \"$uid === auth.uid\",\r\n        \"data\": {\r\n          \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\", \"approvalStatus\"]\r\n        },\r\n        \"bookings\": {\r\n          \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\", \"approvalStatus\"]\r\n        }\r\n      }\r\n    },\r\n    \"turf\": {\r\n      \".read\": \"auth != null\",\r\n      \".write\": \"auth != null\",\r\n      \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\"]\r\n    }\r\n  }\r\n}\r\n"
+[debug] [2026-03-19T11:27:44.511Z] <<< [apiv2][status] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2026-03-19T11:27:44.511Z] <<< [apiv2][body] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] +  database: rules syntax for database turf-1c32c-default-rtdb is valid 
+[info] i  database: releasing rules... 
+[debug] [2026-03-19T11:27:44.513Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:44.514Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb [none]
+[debug] [2026-03-19T11:27:44.901Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb 200
+[debug] [2026-03-19T11:27:44.901Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/turf-1c32c/locations/-/instances/turf-1c32c-default-rtdb {"name":"projects/837226059982/locations/us-central1/instances/turf-1c32c-default-rtdb","project":"projects/837226059982","databaseUrl":"https://turf-1c32c-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2026-03-19T11:27:44.903Z] No OAuth tokens found
+[debug] [2026-03-19T11:27:44.903Z] >>> [apiv2][query] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json 
+[debug] [2026-03-19T11:27:44.903Z] >>> [apiv2][body] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json "{\r\n  \"rules\": {\r\n    \"users\": {\r\n      \".read\": \"auth != null\",\r\n      \".write\": \"auth != null\",\r\n      \"$uid\": {\r\n        \".read\": \"$uid === auth.uid\",\r\n        \".write\": \"$uid === auth.uid\",\r\n        \"data\": {\r\n          \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\", \"approvalStatus\"]\r\n        },\r\n        \"bookings\": {\r\n          \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\", \"approvalStatus\"]\r\n        }\r\n      }\r\n    },\r\n    \"turf\": {\r\n      \".read\": \"auth != null\",\r\n      \".write\": \"auth != null\",\r\n      \".indexOn\": [\"turfId\", \"bookingDate\", \"time\", \"paymentStatus\"]\r\n    }\r\n  }\r\n}\r\n"
+[debug] [2026-03-19T11:27:45.341Z] <<< [apiv2][status] PUT https://turf-1c32c-default-rtdb.firebaseio.com/.settings/rules.json 200

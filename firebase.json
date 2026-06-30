@@ -1,0 +1,11 @@
+{
+  "projects": {
+    "default": "turf-1c32c"
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        "data": {
+          ".indexOn": ["turfId", "bookingDate", "time", "paymentStatus", "approvalStatus"]
+        },
+        "bookings": {
+          ".indexOn": ["turfId", "bookingDate", "time", "paymentStatus", "approvalStatus"]
+        }
+      }
+    },
+    "turf": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["turfId", "bookingDate", "time", "paymentStatus"]
+    }
+  }
+}

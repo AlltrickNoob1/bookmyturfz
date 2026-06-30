@@ -1,0 +1,78 @@
+.booking-page{
+  width: 92%;
+  margin: 24px auto 60px auto;
+}
+.booking-title{
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+.booking-card{
+  display: flex;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.12);
+  margin-bottom: 20px;
+}
+.booking-image{ flex: 0 0 420px; background:#f3f4f6 }
+.booking-image img{ width:100%; height:360px; object-fit:cover; display:block }
+.booking-body{
+  padding: 22px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  justify-content:space-between;
+}
+.booking-name{ font-size:18px; font-weight:700; color:#111827 }
+.booking-address, .booking-time, .booking-date{ color:#4b5563; font-size:14px }
+.booking-actions{ margin-top:12px }
+
+/* Booking History Styles */
+.booking-history{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.booking-history-card{
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.booking-history-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.12);
+}
+.history-card-image{ width:100%; }
+.history-card-image img{ width:100%; height:140px; object-fit:cover; display:block }
+.history-card-body{
+  padding: 14px;
+}
+.history-card-name{ font-size:15px; font-weight:700; color:#111827; margin-bottom:8px }
+.history-card-address, .history-card-time, .history-card-date{ color:#4b5563; font-size:12px; margin-bottom:4px }
+.history-card-status{ font-size:12px; margin-top:8px }
+.status-badge{
+  display: inline-block;
+  padding: 4px 10px;
+  background: #10b981;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+@media (max-width: 900px){
+  .booking-card{ flex-direction:column }
+  .booking-image{ flex: 0 0 auto }
+  .booking-image img{ height:220px }
+  .booking-history{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px){
+  .booking-image{ width:100%; }
+  .booking-image img{ height:180px }
+}
