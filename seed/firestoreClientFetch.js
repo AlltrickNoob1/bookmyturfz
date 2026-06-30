@@ -1,6 +1,6 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-const API_KEY = 'AIzaSyDe27qpEEQComE9p3VrndjGa6qFMtv2qmc';
+const API_KEY = 'Enter_Your_API_KEY';
 const projectId = 'turf-1c32c';
 const collection = 'cricket';
 
