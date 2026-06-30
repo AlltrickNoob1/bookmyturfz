@@ -17,8 +17,8 @@ try {
 
 const db = admin.database();
 const targetEmails = [
-  'abdullahansari.swccs@gmail.com',
-  'ansariabdullah11112222@gmail.com'
+  'ENTER_YOUR_TRAGETED_EMAILS',
+  'ENTER_YOUR_TRAGETED_EMAILS'
 ];
 
 async function inspect() {
