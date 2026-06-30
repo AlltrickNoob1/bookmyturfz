@@ -16,7 +16,7 @@ export const Login = () => {
     const {login,googleSignin} = useUserAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    const adminEmail = process.env.REACT_APP_ADMIN_EMAIL || "ansariabdullah11112222@gmail.com"
+    const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
 
     // handle sign in 
     const handlesignin = async() => {
