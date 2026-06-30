@@ -17,7 +17,7 @@ try {
 
 const db = admin.database();
 const targetEmails = [
-  'ENTER_YOUR_TARGET_EMAIL',
+  'ansariabdullah11112222@gmail.com',
   'ENTER_YOUR_TARGET_EMAIL'
 ];
 
