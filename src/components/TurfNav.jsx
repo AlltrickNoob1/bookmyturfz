@@ -9,122 +9,111 @@ import { collection, getDocs } from "firebase/firestore";
 import { useUserAuth } from "../context/Authcontext";
 import { PopoverProfile } from "./Popover";
 
-export const TurfNav = (prop) => {
-  const { setTurf, onCityChange, search } = prop;
-  const [allSports, setAllSports] = useState(["cricket", "football", "basketball", "badminton"]);
-  // Removed unused docsBySport
+export const TurfNav = ({ setTurf, onSearchChange, search }) => {
+  const [allSports, setAllSports] = useState([
+    "All",
+    "cricket",
+    "football",
+    "basketball",
+    "badminton",
+  ]);
 
   const [selectedSport, setSelectedSport] = useState("All");
-  useEffect(() => {
-    // Fetch all sports collections and gather all unique cities and sports (one-time fetch)
-  
-      // recompute city set and sports set
-      const citySet = new Set();
-      const sportSet = new Set();
-      Object.values(docsBySportTemp).forEach((arr) => {
-        (arr || []).forEach((d) => {
-          // City
-          if (d.city) citySet.add(d.city);
-          else if (d.address) {
-            const parts = d.address.split(",");
-            const c = parts[parts.length - 1].trim();
-            if (c) citySet.add(c);
-          }
-          // Sport
-          if (d.sport) sportSet.add(d.sport);
-        });
-      });
-      const cityList = ["All", ...Array.from(citySet).sort()];
-      setCities(cityList);
-      const sportsDropdown = ["All", ...Array.from(sportSet).sort()];
-      setAllSports(sportsDropdown);
-      if (city && city !== "All" && !citySet.has(city)) {
-        // selected city no longer exists — reset to All
-        onCityChange && onCityChange("All");
-      }
-    };
-    fetchDropdowns();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-    const { user, logout } = useUserAuth();
 
-    const handleLogout = async () => {
+  const { user, logout } = useUserAuth();
+
+  useEffect(() => {
+    const fetchSports = async () => {
       try {
-        await logout();
+        const sports = ["cricket", "football", "basketball", "badminton"];
+        const sportSet = new Set();
+
+        for (const sport of sports) {
+          const snap = await getDocs(collection(db, sport));
+
+          if (!snap.empty) {
+            sportSet.add(sport);
+          }
+        }
+
+        setAllSports(["All", ...Array.from(sportSet)]);
       } catch (err) {
-        console.log(err.message);
+        console.log(err);
       }
     };
-   
+
+    fetchSports();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <>
       <div id="turfnavbg">
         <img src={turfbg} alt="" />
       </div>
+
       <div id="turfNavContainer">
         <div id="topNavturf">
           <div id="turfNav">
             <img src={logo} alt="" />
           </div>
+
           <div id="navBtns">
-            <PopoverProfile handleLogout={handleLogout} email={user ? user.email : ''} />
+            <PopoverProfile
+              handleLogout={handleLogout}
+              email={user ? user.email : ""}
+            />
           </div>
         </div>
+
         <div id="midNavTurf">
           <p>IT'S ALL STARTED HERE!</p>
-           <div
-  style={{
-    display: "flex",
-    gap: 12,
-    alignItems: "center",
-    width: "100%",
-    maxWidth: "560px",
-  }}
->
-  <Input
-    placeholder="Search by turf name or location"
-    value={search || ""}
-    onChange={(e) =>
-      onSearchChange && onSearchChange(e.target.value)
-    }
-    bg="white"
-    color="black"
-    size="md"
-    borderRadius="md"
-  />
 
-  <MdLocationOn color="white" />
-</div>
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              alignItems: "center",
+              width: "100%",
+              maxWidth: "560px",
+            }}
+          >
+            <Input
+              placeholder="Search by turf name or location"
+              value={search}
+              onChange={(e) => onSearchChange(e.target.value)}
+              bg="white"
+              color="black"
+              size="md"
+            />
+
+            <MdLocationOn color="white" size={24} />
+          </div>
         </div>
+
         <div id="botNavTurf">
-          <p id="botNavText">
-            
-            <span
-              style={{
-                color: "red",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-             
-            </span>
-          </p>
           <Select
             value={selectedSport}
             onChange={(e) => {
-              const val = e.target.value;
-              setSelectedSport(val);
-              setTurf(val);
+              setSelectedSport(e.target.value);
+              setTurf(e.target.value);
             }}
             width="280px"
             bg="white"
             color="black"
-            aria-label="Choose sport"
           >
-            {allSports.map((s) => (
-              <option key={s} value={s}>
-                {s === "All" ? "All Sports" : s.charAt(0).toUpperCase() + s.slice(1)}
+            {allSports.map((sport) => (
+              <option key={sport} value={sport}>
+                {sport === "All"
+                  ? "All Sports"
+                  : sport.charAt(0).toUpperCase() + sport.slice(1)}
               </option>
             ))}
           </Select>
@@ -133,6 +122,3 @@ export const TurfNav = (prop) => {
     </>
   );
 };
-
-// Reset selectedSport if allSports changes and current selectedSport is not present
-// (Moved outside the component to avoid unreachable code. If needed, place inside the component above return.)
