@@ -325,7 +325,7 @@ export const Admin = () => {
     if (!name) return toast({ title: "Enter name", status: "warning" });
     try {
       const ref = collection(db, sport);
-      await addDoc(ref, { name, address, image, price: Number(price) });
+      await addDoc(ref, { name: name.toUpperCase(), address: address.toUppercase(), image, price: Number(price) });
       toast({ title: "Turf added", status: "success" });
       setName("");
       setAddress("");
@@ -384,8 +384,8 @@ export const Admin = () => {
     try {
       const turfRef = doc(db, editingTurf.sport, editingTurf.id);
       await updateDoc(turfRef, {
-        name: editName,
-        address: editAddress,
+        name: editName.toUpperCase(),
+        address: editAddress.toUpperCase(),
         price: Number(editPrice),
         image: editImage,
       });
