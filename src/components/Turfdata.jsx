@@ -126,17 +126,13 @@ export const Turfdata = (prop) => {
         if (search && search.trim().length > 0) {
   const query = search.toLowerCase().trim();
 
-  filterData = filterData.filter((d) => {
-    const nameMatch =
-      d.name &&
-      d.name.toLowerCase().includes(query);
-
-    const addressMatch =
-      d.address &&
-      d.address.toLowerCase().includes(query);
-
-    return nameMatch || addressMatch;
-  });
+filterData = filterData.filter((d) => {
+  return (
+    d.name?.toLowerCase().includes(query) ||
+    d.address?.toLowerCase().includes(query) ||
+    d.sport?.toLowerCase().includes(query)
+  );
+});
 }
         // else: both 'All', show everything
 
