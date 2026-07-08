@@ -7,7 +7,6 @@ import { Footer } from "../components/Footer";
 
 
 export const TurfzListing = () => {
-  const [turf, setTurf] = useState("All");
   const [search, setSearch] = useState("");
 
 <TurfNav
