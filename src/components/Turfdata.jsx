@@ -211,7 +211,7 @@ export const Turfdata = (prop) => {
                     <div style={{ background: '#1e293b', color: '#ef4444', padding: '10px 8px', fontWeight: 'bold', textAlign: 'center', fontSize: '12px' }}>Slot / Day</div>
                     {dates.map((d) => (
                       <div key={d.dateKey} style={{ background: '#1e293b', color: '#fff', padding: '10px 8px', textAlign: 'center', border: '1px solid #0e172a' }}>
-                        <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{d.day}</div>
+                        <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{d.dayName}</div>
                         <div style={{ fontSize: '11px', color: '#a0aec0' }}>{d.dateKey}</div>
                         <div style={{ fontSize: '10px', marginTop: '4px', color: '#16a34a' }}>✓ {d.availableCount}</div>
                       </div>
