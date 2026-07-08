@@ -6,7 +6,7 @@ import { Loading } from "./Loading";
 import { TimeSelectModal } from "./TimeSelectModal";
 
 export const Turfdata = (prop) => {
-  const { turf, city } = prop;
+  const { turf, search } = prop;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -123,26 +123,21 @@ export const Turfdata = (prop) => {
         // 3. If turf is specific and city is 'All', show all locations for that sport
         // 4. If both are specific, show only that sport in that city
 
-        if (city !== "All" && turf === "All") {
-          // All sports, specific city
-          filterData = allData.filter((d) => {
-            if (d.city) return d.city === city;
-            if (d.address) return d.address.toLowerCase().includes(city.toLowerCase());
-            return false;
-          });
-        } else if (city === "All" && turf !== "All") {
-          // Specific sport, all locations
-          filterData = allData.filter((d) => {
-            // Show all locations that have this sport
-            return d.sport === turf;
-          });
-        } else if (city !== "All" && turf !== "All") {
-          // Specific sport, specific city
-          filterData = allData.filter((d) => {
-            const matchCity = d.city ? d.city === city : (d.address && d.address.toLowerCase().includes(city.toLowerCase()));
-            return matchCity && d.sport === turf;
-          });
-        }
+        if (search && search.trim().length > 0) {
+  const query = search.toLowerCase().trim();
+
+  filterData = filterData.filter((d) => {
+    const nameMatch =
+      d.name &&
+      d.name.toLowerCase().includes(query);
+
+    const addressMatch =
+      d.address &&
+      d.address.toLowerCase().includes(query);
+
+    return nameMatch || addressMatch;
+  });
+}
         // else: both 'All', show everything
 
         setData(filterData);
