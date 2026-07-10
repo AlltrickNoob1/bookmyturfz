@@ -123,6 +123,36 @@
   .turf-container{ padding: 20px 0 40px 0; }
 }
 
+.pagination-bar{
+    width: 90%;
+    margin: 0 auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #e5e7eb;
+}
+
+.pagination-btn{
+    background: transparent;
+    color: #ef4444;
+    border: 2px solid #ef4444;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pagination-btn:disabled{
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pagination-info{
+    font-size: 14px;
+    font-weight: 600;
+}
+
 
 .turf-box{
     background: linear-gradient(135deg, #111318 0%, #0f172a 100%);

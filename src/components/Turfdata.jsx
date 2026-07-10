@@ -16,6 +16,8 @@ export const Turfdata = (prop) => {
   const [turfSlots, setTurfSlots] = useState({});
   const [selectedTurf, setSelectedTurf] = useState(null);
   const [isChartOpen, setIsChartOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   // const navigate = useNavigate()
 
@@ -98,6 +100,10 @@ export const Turfdata = (prop) => {
   }, []);
 
   useEffect(() => {
+    setCurrentPage(1);
+  }, [turf, search]);
+
+  useEffect(() => {
     const SPORTS = ["cricket", "football", "basketball", "badminton"];
     setLoading(true);
     const getData = async () => {
@@ -163,11 +169,15 @@ if (search && search.trim()) {
     )
   }
  console.log(error);
+  const totalPages = Math.max(1, Math.ceil(data.length / itemsPerPage));
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleData = data.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <div>
       <p className="heading-turf">Turf Available for {turf}</p>
       <div className="turf-container">
-        {data.map((ele) => {
+        {visibleData.map((ele) => {
           return (
             <div className="turf-box" key={ele.id}>
               <div className="listing-img" onClick={() => { setSelectedTurf(ele); setIsChartOpen(true); }} style={{ cursor: 'pointer' }}>
@@ -191,6 +201,28 @@ if (search && search.trim()) {
           );
         })}
       </div>
+
+      {data.length > itemsPerPage && (
+        <div className="pagination-bar">
+          <button
+            type="button"
+            className="pagination-btn"
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          >
+            Previous
+          </button>
+          <span className="pagination-info">Page {currentPage} of {totalPages}</span>
+          <button
+            type="button"
+            className="pagination-btn"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          >
+            Next
+          </button>
+        </div>
+      )}
 
       {selectedTurf && (
         <div className="slot-chart-modal" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', display: isChartOpen ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center', zIndex: 1999, backdropFilter: 'blur(4px)' }}>

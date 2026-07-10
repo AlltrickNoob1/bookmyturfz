@@ -53,15 +53,16 @@ import {
   AlertIcon,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import * as authUtils from "../utils/authUtils.js";
 
 const SPORTS = ["cricket", "football", "basketball", "badminton"];
 
 export const Admin = () => {
   const { user, logout } = useUserAuth();
   const toast = useToast();
-  const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
+  const adminEmail = authUtils.getConfiguredAdminEmail();
 
-  const isSuperAdmin = user && user.email === adminEmail;
+  const isSuperAdmin = user && authUtils.isMatchingAdminEmail(user.email, adminEmail);
   const canEdit = isSuperAdmin;
 
   const [sport, setSport] = useState(SPORTS[0]);

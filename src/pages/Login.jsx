@@ -8,6 +8,7 @@ import { useUserAuth } from "../context/Authcontext";
 import { Alert } from "@chakra-ui/react";
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase-config/config';
+import * as authUtils from '../utils/authUtils.js';
 
 export const Login = () => {
     const [email,setEmail] = useState("");
@@ -16,7 +17,7 @@ export const Login = () => {
     const {login,googleSignin} = useUserAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    const adminEmail = process.env.REACT_APP_ADMIN_EMAIL;
+    const adminEmail = authUtils.getConfiguredAdminEmail();
 
     // handle sign in 
     const handlesignin = async() => {
@@ -33,12 +34,12 @@ export const Login = () => {
           return;
         }
 
-        if (err.code === "auth/user-not-found" && email.toLowerCase() === adminEmail.toLowerCase()) {
+        if (err.code === "auth/user-not-found" && authUtils.isMatchingAdminEmail(email, adminEmail)) {
           setError("Admin account not found. Please sign up or contact support.");
           return;
         }
 
-        if ((err.code === "auth/wrong-password" || err.code === "auth/invalid-login-credentials") && email.toLowerCase() === adminEmail.toLowerCase()) {
+        if ((err.code === "auth/wrong-password" || err.code === "auth/invalid-login-credentials") && authUtils.isMatchingAdminEmail(email, adminEmail)) {
           try {
             await sendPasswordResetEmail(auth, adminEmail);
             setError(`Admin password mismatch. Reset link sent to ${adminEmail}.`);
